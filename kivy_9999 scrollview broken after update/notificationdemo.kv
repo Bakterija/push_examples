@@ -1,0 +1,150 @@
+#:import mmmm scrollview22.ScrollView_Modified
+#:import mmmm2 recycleview_modified.RecycleView_Modified
+<Media_Button>
+    size_hint: 1, 1
+    bg_selected: [0.80, 0.20, 0.40, 1]
+    bg_default: [0.20, 0.20, 0.40, 1]
+    bg_color: self.bg_default
+    canvas.before:
+        Color:
+            rgba: self.bg_color
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    on_release: root.press()
+    Label:
+        size_hint: 1, 1
+        text: root.text
+        text_size: self.size[0], self.text_size[1]
+        padding_x: 20
+
+<NotificationDemo>:
+    Label:
+        id: BigLabel0
+        text: 'Carousel parent in StackLayout, (3 slides)'
+        size_hint: 1, 0.15
+        texture_size: self.size
+        text_size: self.texture_size
+        font_size: 26
+        canvas.before:
+            Color:
+                rgba: [0.2, 0.2, 0.2, 1]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+    Carousel:
+        id: caro
+        direction: 'right'
+        size_hint: 1, 0.85
+        ignore_perpendicular_swipes: True
+        min_move: 0.2
+        scroll_timeout: 150
+
+        StackLayout:
+            Label:
+                id: BigLabel1
+                text: 'RecycleView now'
+                size_hint: 1, 0.1
+                text_size: self.size
+                font_size: 20
+                canvas.before:
+                    Color:
+                        rgba: [0.1, 0.1, 0.1, 1]
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+            RecycleView:
+                id: rv
+                size_hint: 1, 0.9
+                scroll_type: ['bars', 'content']
+                scroll_wheel_distance: dp(114)
+                bar_width: dp(10)
+                viewclass: 'Media_Button'
+                data: []
+                ProjectsRecycleBoxLayout:
+                    id: rv_box
+                    orientation: 'vertical'
+                    size_hint: 1, None
+                    height: self.minimum_height
+                    default_size: None, cm(1)
+                    default_size_hint: 1, None
+                    spacing: '2dp'
+
+        StackLayout:
+            Label:
+                id: BigLabel2
+                text: 'RecycleView before'
+                size_hint: 1, 0.1
+                text_size: self.size
+                font_size: 20
+                canvas.before:
+                    Color:
+                        rgba: [0.1, 0.1, 0.1, 1]
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+            RecycleView_Modified:
+                id: rv2
+                size_hint: 1, 0.9
+                scroll_type: ['bars', 'content']
+                scroll_wheel_distance: dp(114)
+                bar_width: dp(10)
+                viewclass: 'Media_Button2'
+                data: []
+                ProjectsRecycleBoxLayout:
+                    id: rv_box2
+                    orientation: 'vertical'
+                    size_hint: 1, None
+                    height: self.minimum_height
+                    default_size: None, cm(1)
+                    default_size_hint: 1, None
+                    spacing: '2dp'
+
+                    
+        StackLayout:
+            Label:
+                id: BigLabel3
+                text: 'Scrollview now'
+                size_hint: 1, 0.1
+                text_size: self.size
+                texture_size: self.size
+                font_size: 20
+                canvas.before:
+                    Color:
+                        rgba: [0.1, 0.1, 0.1, 1]
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+            ScrollView:
+                id: scroller
+                size_hint: 1, 0.9
+                GridLayout
+                    id: gridr
+                    cols: 1
+                    spacing: 1
+                    size_hint_y: None
+                    height: self.minimum_height
+
+        StackLayout:
+            Label:
+                id: BigLabel4
+                text: 'Scrollview before'
+                size_hint: 1, 0.1
+                text_size: self.size
+                texture_size: self.size
+                font_size: 20
+                canvas.before:
+                    Color:
+                        rgba: [0.1, 0.1, 0.1, 1]
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+            ScrollView_Modified:
+                id: scroller
+                size_hint: 1, 0.9
+                GridLayout
+                    id: gridr2
+                    cols: 1
+                    spacing: 1
+                    size_hint_y: None
+                    height: self.minimum_height
